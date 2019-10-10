@@ -58,6 +58,8 @@ class HeaderStyle {
   /// Defaults to black `Icons.chevron_right`.
   final Icon rightChevronIcon;
 
+  final String formatButtonImageAssetName;
+
   const HeaderStyle({
     this.centerHeaderTitle = false,
     this.formatButtonVisible = true,
@@ -66,15 +68,24 @@ class HeaderStyle {
     this.titleTextStyle = const TextStyle(fontSize: 17.0),
     this.formatButtonTextStyle = const TextStyle(),
     this.formatButtonDecoration = const BoxDecoration(
-      border: const Border(top: BorderSide(), bottom: BorderSide(), left: BorderSide(), right: BorderSide()),
-      borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+      border: const Border(
+          top: BorderSide(),
+          bottom: BorderSide(),
+          left: BorderSide(),
+          right: BorderSide()),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(12.0),
+      ),
     ),
-    this.formatButtonPadding = const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+    this.formatButtonPadding = const EdgeInsets.fromLTRB(12, 0, 12,
+        0), //const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
     this.leftChevronPadding = const EdgeInsets.all(12.0),
     this.rightChevronPadding = const EdgeInsets.all(12.0),
     this.leftChevronMargin = const EdgeInsets.symmetric(horizontal: 8.0),
     this.rightChevronMargin = const EdgeInsets.symmetric(horizontal: 8.0),
     this.leftChevronIcon = const Icon(Icons.chevron_left, color: Colors.black),
-    this.rightChevronIcon = const Icon(Icons.chevron_right, color: Colors.black),
+    this.rightChevronIcon =
+        const Icon(Icons.chevron_right, color: Colors.black),
+    this.formatButtonImageAssetName = "assets/images/filter.png",
   });
 }

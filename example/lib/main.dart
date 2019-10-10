@@ -140,9 +140,20 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           color: Colors.deepOrange[400],
           borderRadius: BorderRadius.circular(16.0),
         ),
+        formatButtonImageAssetName: 'assets/images/filter.png',
       ),
       onDaySelected: _onDaySelected,
       onVisibleDaysChanged: _onVisibleDaysChanged,
+      onFormatButtonTap: () {
+        print("TAP ON FORMAT BUTTON");
+        setState(() {
+          if (_calendarController.calendarFormat == CalendarFormat.week) {
+            _calendarController.setCalendarFormat(CalendarFormat.month);
+          } else {
+            _calendarController.setCalendarFormat(CalendarFormat.week);
+          }
+        });
+      },
     );
   }
 
