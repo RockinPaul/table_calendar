@@ -21,7 +21,7 @@ class _CustomImageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: margin,
       child: InkWell(
         onTap: onTap,

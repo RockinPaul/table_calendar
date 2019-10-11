@@ -126,6 +126,9 @@ class TableCalendar extends StatefulWidget {
 
   final Function onFormatButtonTap;
 
+  // Set background color for row of selected date. Transparent by default
+  final Color selectedWeekColor;
+
   TableCalendar({
     Key key,
     @required this.calendarController,
@@ -159,6 +162,7 @@ class TableCalendar extends StatefulWidget {
     this.headerStyle = const HeaderStyle(),
     this.builders = const CalendarBuilders(),
     this.onFormatButtonTap,
+    this.selectedWeekColor = Colors.transparent,
   })  : assert(calendarController != null),
         assert(availableCalendarFormats.keys.contains(initialCalendarFormat)),
         assert(availableCalendarFormats.length <= CalendarFormat.values.length),
@@ -297,13 +301,13 @@ class _TableCalendarState extends State<TableCalendar>
         ),
       ),
       _CustomImageButton(
-        image: Image.asset("assets/images/arrow_left.png"),
+        image: Image.asset(widget.headerStyle.leftChevronImageName),
         onTap: _selectPrevious,
         margin: widget.headerStyle.leftChevronMargin,
         padding: widget.headerStyle.leftChevronPadding,
       ),
       _CustomImageButton(
-        image: Image.asset("assets/images/arrow_right.png"),
+        image: Image.asset(widget.headerStyle.rightChevronImageName),
         onTap: _selectNext,
         margin: widget.headerStyle.rightChevronMargin,
         padding: widget.headerStyle.rightChevronPadding,
@@ -420,7 +424,7 @@ class _TableCalendarState extends State<TableCalendar>
 
     return Container(
       key: key,
-      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+//      margin: const EdgeInsets.symmetric(horizontal: 8.0),
       child: wrappedChild,
     );
   }
@@ -504,7 +508,13 @@ class _TableCalendarState extends State<TableCalendar>
 
   TableRow _buildTableRow(List<DateTime> days) {
     return TableRow(
-        children: days.map((date) => _buildTableCell(date)).toList());
+      children: days.map((date) => _buildTableCell(date)).toList(),
+      decoration: BoxDecoration(
+        // was without decoration
+        color: days.contains(widget.calendarController.selectedDay) ? widget.selectedWeekColor : Colors.transparent,
+        borderRadius: BorderRadius.circular(32),
+      ),
+    );
   }
 
   // TableCell will have equal width and height
@@ -512,8 +522,12 @@ class _TableCalendarState extends State<TableCalendar>
     return LayoutBuilder(
       builder: (context, constraints) => ConstrainedBox(
         constraints: BoxConstraints(
-          maxHeight: widget.rowHeight ?? constraints.maxWidth,
-          minHeight: widget.rowHeight ?? constraints.maxWidth,
+          maxWidth: widget.rowHeight ?? constraints.maxWidth,
+          minWidth: widget.rowHeight ?? constraints.maxWidth,
+          maxHeight: (widget.rowHeight ?? constraints.maxWidth) + 5,
+          // was (widget.rowHeight ?? constraints.maxWidth)
+          minHeight: (widget.rowHeight ?? constraints.maxWidth) +
+              5, // was (widget.rowHeight ?? constraints.maxWidth)
         ),
         child: _buildCell(date),
       ),

@@ -60,6 +60,9 @@ class HeaderStyle {
 
   final String formatButtonImageAssetName;
 
+  final String leftChevronImageName;
+  final String rightChevronImageName;
+
   const HeaderStyle({
     this.centerHeaderTitle = false,
     this.formatButtonVisible = true,
@@ -87,5 +90,7 @@ class HeaderStyle {
     this.rightChevronIcon =
         const Icon(Icons.chevron_right, color: Colors.black),
     this.formatButtonImageAssetName = "assets/images/filter.png",
+    this.leftChevronImageName,
+    this.rightChevronImageName,
   });
 }
