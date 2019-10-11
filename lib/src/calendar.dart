@@ -709,7 +709,7 @@ class _TableCalendarState extends State<TableCalendar>
       return Container(
         width: 4.0,
         height: 4.0,
-        margin: const EdgeInsets.symmetric(horizontal: 0.3),
+        margin: const EdgeInsets.symmetric(horizontal: 1.0), // was 0.3
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: color != null ? color : widget.calendarStyle.markersColor,
