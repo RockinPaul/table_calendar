@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           // Switch out 2 lines below to play with TableCalendar's settings
           //-----------------------
           _buildTableCalendar(),
-          // _buildTableCalendarWithBuilders(),
+//           _buildTableCalendarWithBuilders(),
           const SizedBox(height: 8.0),
           _buildButtons(),
           const SizedBox(height: 8.0),
@@ -163,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   Widget _buildTableCalendar() {
     return TableCalendar(
       calendarController: _calendarController,
-      selectedWeekColor: Colors.white,
+//      selectedWeekColor: Colors.white,
       events: _events,
       holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,
@@ -219,60 +219,102 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   // More advanced TableCalendar configuration (using Builders & Styles)
   Widget _buildTableCalendarWithBuilders() {
     return TableCalendar(
-      locale: 'pl_PL',
       calendarController: _calendarController,
+      selectedWeekColor: Colors.white,
       events: _events,
       holidays: _holidays,
+      startingDayOfWeek: StartingDayOfWeek.monday,
+//      startingDayOfWeek: StartingDayOfWeek.sunday,
+//      locale: 'pl_PL',
       initialCalendarFormat: CalendarFormat.month,
       formatAnimation: FormatAnimation.slide,
-      startingDayOfWeek: StartingDayOfWeek.sunday,
       availableGestures: AvailableGestures.all,
       availableCalendarFormats: const {
         CalendarFormat.month: '',
         CalendarFormat.week: '',
+      },
+      daysOfWeekStyle: DaysOfWeekStyle(
+        weekdayStyle: TextStyle(
+          fontFamily: "SF-Pro-Rounded",
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+        weekendStyle: TextStyle(
+          fontFamily: "SF-Pro-Rounded",
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      onDaySelected: _onDaySelected,
+      onVisibleDaysChanged: _onVisibleDaysChanged,
+      onFormatButtonTap: () {
+        print("TAP ON FORMAT BUTTON");
+        setState(() {
+          if (_calendarController.calendarFormat == CalendarFormat.week) {
+            _calendarController.setCalendarFormat(CalendarFormat.month);
+          } else {
+            _calendarController.setCalendarFormat(CalendarFormat.week);
+          }
+        });
       },
       calendarStyle: CalendarStyle(
         outsideDaysVisible: false,
         weekendStyle: TextStyle().copyWith(color: Colors.blue[800]),
         holidayStyle: TextStyle().copyWith(color: Colors.blue[800]),
       ),
-      daysOfWeekStyle: DaysOfWeekStyle(
-        weekendStyle: TextStyle().copyWith(color: Colors.blue[600]),
-      ),
+//      daysOfWeekStyle: DaysOfWeekStyle(
+//        weekendStyle: TextStyle().copyWith(color: Colors.blue[600]),
+//      ),
+//      headerStyle: HeaderStyle(
+//        centerHeaderTitle: true,
+//        formatButtonVisible: false,
+//      ),
       headerStyle: HeaderStyle(
-        centerHeaderTitle: true,
-        formatButtonVisible: false,
+        formatButtonTextStyle:
+        TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
+        formatButtonDecoration: BoxDecoration(
+          color: Colors.deepOrange[400],
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        titleTextStyle: TextStyle(
+          fontFamily: "SF-Pro-Rounded",
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+        ),
+        formatButtonImageAssetName: 'assets/images/filter.png',
+        leftChevronImageName: 'assets/images/arrow_left.png',
+        rightChevronImageName: 'assets/images/arrow_right.png',
       ),
       builders: CalendarBuilders(
-        selectedDayBuilder: (context, date, _) {
-          return FadeTransition(
-            opacity: Tween(begin: 0.0, end: 1.0).animate(_animationController),
-            child: Container(
-              margin: const EdgeInsets.all(4.0),
-              padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-              color: Colors.deepOrange[300],
-              width: 100,
-              height: 100,
-              child: Text(
-                '${date.day}',
-                style: TextStyle().copyWith(fontSize: 16.0),
-              ),
-            ),
-          );
-        },
-        todayDayBuilder: (context, date, _) {
-          return Container(
-            margin: const EdgeInsets.all(4.0),
-            padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-            color: Colors.amber[400],
-            width: 100,
-            height: 100,
-            child: Text(
-              '${date.day}',
-              style: TextStyle().copyWith(fontSize: 16.0),
-            ),
-          );
-        },
+//        selectedDayBuilder: (context, date, _) {
+//          return FadeTransition(
+//            opacity: Tween(begin: 0.0, end: 1.0).animate(_animationController),
+//            child: Container(
+//              margin: const EdgeInsets.all(4.0),
+//              padding: const EdgeInsets.only(top: 5.0, left: 6.0),
+//              color: Colors.deepOrange[300],
+//              width: 100,
+//              height: 100,
+//              child: Text(
+//                '${date.day}',
+//                style: TextStyle().copyWith(fontSize: 16.0),
+//              ),
+//            ),
+//          );
+//        },
+//        todayDayBuilder: (context, date, _) {
+//          return Container(
+//            margin: const EdgeInsets.all(4.0),
+//            padding: const EdgeInsets.only(top: 5.0, left: 6.0),
+//            color: Colors.amber[400],
+//            width: 100,
+//            height: 100,
+//            child: Text(
+//              '${date.day}',
+//              style: TextStyle().copyWith(fontSize: 16.0),
+//            ),
+//          );
+//        },
         markersBuilder: (context, date, events, holidays) {
           final children = <Widget>[];
 
@@ -299,11 +341,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           return children;
         },
       ),
-      onDaySelected: (date, events) {
-        _onDaySelected(date, events);
-        _animationController.forward(from: 0.0);
-      },
-      onVisibleDaysChanged: _onVisibleDaysChanged,
+//      onDaySelected: (date, events) {
+//        _onDaySelected(date, events);
+//        _animationController.forward(from: 0.0);
+//      },
+//      onVisibleDaysChanged: _onVisibleDaysChanged,
     );
   }
 

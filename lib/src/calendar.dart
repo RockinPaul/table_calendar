@@ -511,7 +511,9 @@ class _TableCalendarState extends State<TableCalendar>
       children: days.map((date) => _buildTableCell(date)).toList(),
       decoration: BoxDecoration(
         // was without decoration
-        color: days.contains(widget.calendarController.selectedDay) ? widget.selectedWeekColor : Colors.transparent,
+        color: days.contains(widget.calendarController.selectedDay)
+            ? widget.selectedWeekColor
+            : Colors.transparent,
         borderRadius: BorderRadius.circular(32),
       ),
     );
@@ -568,6 +570,22 @@ class _TableCalendarState extends State<TableCalendar>
             ),
           );
         } else {
+          List<Color> _markersColors = [
+            Color(0xffdc1edf),
+            Color(0xff6dd400),
+            Color(0xff0091ff),
+            Color(0xffffff00),
+          ];
+          List<Widget> _markers = List<Widget>();
+          for (int i = 0; i < events.length - 1; i++) {
+            dynamic _event = events.toList()[i];
+            Color _color = i < _markersColors.length
+                ? _markersColors[i]
+                : widget.calendarStyle.markersColor;
+            _markers
+                .add(_buildMarker(eventKey, _event, color: _color));
+          }
+
           children.add(
             Positioned(
               top: widget.calendarStyle.markersPositionTop,
@@ -576,9 +594,10 @@ class _TableCalendarState extends State<TableCalendar>
               right: widget.calendarStyle.markersPositionRight,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
-                children: events
-                    .map((event) => _buildMarker(eventKey, event))
-                    .toList(),
+                children: _markers,
+//  was               events
+//                    .map((event) => _buildMarker(eventKey, event))
+//                    .toList(),
               ),
             ),
           );
@@ -683,17 +702,17 @@ class _TableCalendarState extends State<TableCalendar>
     }
   }
 
-  Widget _buildMarker(DateTime date, dynamic event) {
+  Widget _buildMarker(DateTime date, dynamic event, {Color color}) {
     if (widget.builders.singleMarkerBuilder != null) {
       return widget.builders.singleMarkerBuilder(context, date, event);
     } else {
       return Container(
-        width: 8.0,
-        height: 8.0,
+        width: 4.0,
+        height: 4.0,
         margin: const EdgeInsets.symmetric(horizontal: 0.3),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: widget.calendarStyle.markersColor,
+          color: color != null ? color : widget.calendarStyle.markersColor,
         ),
       );
     }
