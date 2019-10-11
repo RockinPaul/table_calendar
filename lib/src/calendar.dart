@@ -481,11 +481,17 @@ class _TableCalendarState extends State<TableCalendar>
       x += daysInWeek;
     }
 
-    return Table(
-      // Makes this Table fill its parent horizontally
-      defaultColumnWidth: FractionColumnWidth(1.0 / daysInWeek),
-      children: children,
-    );
+//    return FittedBox(
+//      child: Container(
+//        width: MediaQuery.of(context).size.width, // We can wrap
+//        height: MediaQuery.of(context).size.height/3,
+        return Table(
+          // Makes this Table fill its parent horizontally
+          defaultColumnWidth: FractionColumnWidth(1.0 / daysInWeek),
+          children: children,
+        );
+//      ),
+//    );
   }
 
   TableRow _buildDaysOfWeek() {
