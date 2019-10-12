@@ -169,6 +169,11 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,
       calendarStyle: CalendarStyle(
+        weekdayStyle: TextStyle(
+          fontFamily: "SF-Pro-Rounded",
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+        ),
         selectedColor: Colors.deepOrange[400],
         todayColor: Colors.deepOrange[200],
         markersColor: Colors.brown[700],
@@ -193,13 +198,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       daysOfWeekStyle: DaysOfWeekStyle(
         weekdayStyle: TextStyle(
           fontFamily: "SF-Pro-Rounded",
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
         ),
         weekendStyle: TextStyle(
           fontFamily: "SF-Pro-Rounded",
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
         ),
       ),
       onDaySelected: _onDaySelected,

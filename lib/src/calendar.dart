@@ -502,7 +502,7 @@ class _TableCalendarState extends State<TableCalendar>
           child: Text(
             widget.daysOfWeekStyle.dowTextBuilder != null
                 ? widget.daysOfWeekStyle.dowTextBuilder(date, widget.locale)
-                : DateFormat.E(widget.locale).format(date),
+                : DateFormat.E(widget.locale).format(date).toUpperCase(),
             style: widget.calendarController._isWeekend(date)
                 ? widget.daysOfWeekStyle.weekendStyle
                 : widget.daysOfWeekStyle.weekdayStyle,
