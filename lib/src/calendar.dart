@@ -583,7 +583,7 @@ class _TableCalendarState extends State<TableCalendar>
             Color(0xffffff00),
           ];
           List<Widget> _markers = List<Widget>();
-          for (int i = 0; i < events.length - 1; i++) {
+          for (int i = 0; i < events.length; i++) {
             dynamic _event = events.toList()[i];
             Color _color = i < _markersColors.length
                 ? _markersColors[i]
