@@ -164,9 +164,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   // Simple TableCalendar configuration (using Styles)
   Widget _buildTableCalendar() {
+    print("SELECTED DAY ${_calendarController.selectedDay}");
+    print("FOCUSED DAY ${_calendarController.focusedDay}");
+//    if (_calendarController.selectedDay == null) {
+//      _calendarController.setSelectedDay(DateTime.now());
+//    }
     return TableCalendar(
       calendarController: _calendarController,
-//      selectedWeekColor: Colors.white,
+      selectedWeekColor: Colors.white,
       events: _events,
       holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.monday,

@@ -35,8 +35,12 @@ class CalendarController {
   CalendarFormat get calendarFormat => _calendarFormat.value;
 
   /// List of currently visible days.
-  List<DateTime> get visibleDays =>
-      _includeInvisibleDays ? _visibleDays.value : _visibleDays.value.where((day) => !_isExtraDay(day)).toList();
+//  List<DateTime> get visibleDays => was
+//      _includeInvisibleDays ? _visibleDays.value : _visibleDays.value.where((day) => !_isExtraDay(day)).toList();
+
+  List<DateTime> get visibleDays => calendarFormat == CalendarFormat.month && !_includeInvisibleDays
+      ? _visibleDays.value.where((day) => !_isExtraDay(day)).toList()
+      : _visibleDays.value;
 
   /// Map of currently visible events.
   Map<DateTime, List> get visibleEvents => Map.fromEntries(
@@ -46,7 +50,6 @@ class CalendarController {
               return true;
             }
           }
-
           return false;
         }),
       );
@@ -59,7 +62,6 @@ class CalendarController {
               return true;
             }
           }
-
           return false;
         }),
       );
@@ -107,6 +109,7 @@ class CalendarController {
     _focusedDay = initialDay ?? DateTime(now.year, now.month, now.day);
     _selectedDay = _focusedDay;
     _calendarFormat = ValueNotifier(initialFormat);
+
     _visibleDays = ValueNotifier(_getVisibleDays());
     _previousFirstDay = _visibleDays.value.first;
     _previousLastDay = _visibleDays.value.last;
@@ -140,8 +143,8 @@ class CalendarController {
   /// }
   /// ```
   void dispose() {
-    _calendarFormat.dispose();
-    _visibleDays.dispose();
+    _calendarFormat?.dispose();
+    _visibleDays?.dispose();
   }
 
   /// Toggles calendar format. Same as using `FormatButton`.
@@ -179,6 +182,10 @@ class CalendarController {
     bool animate = true,
     bool runCallback = false,
   }) {
+    print("VALUE IN SET SELECTED DAY: $value");
+    print(value.isBefore(DateTime.now()));
+    print(value.isAfter(DateTime.now()));
+
     if (animate) {
       if (value.isBefore(_getFirstDay(includeInvisible: false))) {
         _decrementPage();
@@ -280,9 +287,13 @@ class CalendarController {
   }
 
   DateTime _getFirstDay({@required bool includeInvisible}) {
+    print("GET FIRST DAY");
+    print(_calendarFormat.value);
     if (_calendarFormat.value == CalendarFormat.month && !includeInvisible) {
+      print("FIRST FROM _FOCUSED");
       return _firstDayOfMonth(_focusedDay);
     } else {
+      print("FIRST FROM VISIBLE");
       return _visibleDays.value.first;
     }
   }
