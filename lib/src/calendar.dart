@@ -192,6 +192,14 @@ class _TableCalendarState extends State<TableCalendar>
     );
   }
 
+  @override
+  void didUpdateWidget(TableCalendar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.events != widget.events) {
+      widget.calendarController._events = widget.events;
+    }
+  }
+
   void _selectedDayCallback(DateTime day) {
     if (widget.onDaySelected != null) {
       widget.onDaySelected(day,
