@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0ce5872-ad66-4b87-942f-9369696779c1" name="Default Changelist" comment="Single marker issue fixed.">
+    <list default="true" id="d0ce5872-ad66-4b87-942f-9369696779c1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/calendar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/calendar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/calendar_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/calendar_controller.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -24,26 +25,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3087">
+            <state relative-caret-position="-149">
               <caret line="150" column="54" selection-start-line="150" selection-start-column="54" selection-end-line="150" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/src/calendar.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="198" column="56" lean-forward="true" selection-start-line="198" selection-start-column="56" selection-end-line="198" selection-end-column="56" />
+            <state relative-caret-position="306">
+              <caret line="512" column="22" lean-forward="true" selection-start-line="512" selection-start-column="22" selection-end-line="512" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/calendar_controller.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2226">
-              <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
+            <state relative-caret-position="257">
+              <caret line="97" column="43" lean-forward="true" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -86,10 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hours</find>
-      <find>hour</find>
-      <find>CALLBACK</find>
-      <find>marker</find>
       <find>_buildTableCell</find>
       <find>_buildTableRow</find>
       <find>_buildDaysOfWeek</find>
@@ -116,6 +113,10 @@
       <find>_calendarFormat</find>
       <find>_init</find>
       <find>initialFormat</find>
+      <find>events</find>
+      <find>this.ev</find>
+      <find>return Center</find>
+      <find>@req</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,9 +131,9 @@
         <option value="$PROJECT_DIR$/lib/src/customization/days_of_week_style.dart" />
         <option value="$PROJECT_DIR$/lib/src/widgets/custom_image_button.dart" />
         <option value="$PROJECT_DIR$/example/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/lib/src/calendar_controller.dart" />
         <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/src/calendar.dart" />
+        <option value="$PROJECT_DIR$/lib/src/calendar_controller.dart" />
       </list>
     </option>
   </component>
@@ -150,7 +151,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -178,7 +179,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -286,14 +287,21 @@
       <option name="project" value="LOCAL" />
       <updated>1571591384678</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Update calendar controller events when widget updates.">
+      <created>1572029416715</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572029416715</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17582418" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17582418" />
       <window_info id="Structure" order="1" side_tool="true" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -302,7 +310,7 @@
       <window_info id="Resources Explorer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="0" sideWeight="0.4993895" visible="true" weight="0.23718713" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4993895" weight="0.23718713" />
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
@@ -330,7 +338,8 @@
     <MESSAGE value="Update." />
     <MESSAGE value="Weekdays font fix." />
     <MESSAGE value="Single marker issue fixed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Single marker issue fixed." />
+    <MESSAGE value="Update calendar controller events when widget updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update calendar controller events when widget updates." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/example/assets/images/filter.png">
@@ -434,20 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3087">
-          <caret line="150" column="54" selection-start-line="150" selection-start-column="54" selection-end-line="150" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/calendar_controller.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2226">
-          <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/customization/days_of_week_style.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -469,10 +464,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-149">
+          <caret line="150" column="54" selection-start-line="150" selection-start-column="54" selection-end-line="150" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/calendar.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="198" column="56" lean-forward="true" selection-start-line="198" selection-start-column="56" selection-end-line="198" selection-end-column="56" />
+        <state relative-caret-position="306">
+          <caret line="512" column="22" lean-forward="true" selection-start-line="512" selection-start-column="22" selection-end-line="512" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/calendar_controller.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="97" column="43" lean-forward="true" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
         </state>
       </provider>
     </entry>

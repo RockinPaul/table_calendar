@@ -42,29 +42,40 @@ class CalendarController {
       ? _visibleDays.value.where((day) => !_isExtraDay(day)).toList()
       : _visibleDays.value;
 
-  /// Map of currently visible events.
-  Map<DateTime, List> get visibleEvents => Map.fromEntries(
-        _events.entries.where((entry) {
-          for (final day in visibleDays) {
-            if (_isSameDay(day, entry.key)) {
-              return true;
-            }
-          }
-          return false;
-        }),
-      );
+  /// `Map` of currently visible events.
+  Map<DateTime, List> get visibleEvents {
+    if (_events == null) {
+      return {};
+    }
 
-  /// Map of currently visible holidays.
-  Map<DateTime, List> get visibleHolidays => Map.fromEntries(
-        _holidays.entries.where((entry) {
-          for (final day in visibleDays) {
-            if (_isSameDay(day, entry.key)) {
-              return true;
-            }
+    return Map.fromEntries(
+      _events.entries.where((entry) {
+        for (final day in visibleDays) {
+          if (_isSameDay(day, entry.key)) {
+            return true;
           }
-          return false;
-        }),
-      );
+        }
+        return false;
+      }),
+    );
+  }
+
+  /// `Map` of currently visible holidays.
+  Map<DateTime, List> get visibleHolidays {
+    if (_holidays == null) {
+      return {};
+    }
+    return Map.fromEntries(
+      _holidays.entries.where((entry) {
+        for (final day in visibleDays) {
+          if (_isSameDay(day, entry.key)) {
+            return true;
+          }
+        }
+        return false;
+      }),
+    );
+  }
 
   Map<DateTime, List> _events;
   Map<DateTime, List> _holidays;
@@ -92,6 +103,7 @@ class CalendarController {
     @required StartingDayOfWeek startingDayOfWeek,
     @required _SelectedDayCallback selectedDayCallback,
     @required OnVisibleDaysChanged onVisibleDaysChanged,
+
     @required bool includeInvisibleDays,
   }) {
     _events = events;

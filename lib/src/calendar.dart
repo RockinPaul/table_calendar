@@ -198,6 +198,9 @@ class _TableCalendarState extends State<TableCalendar>
     if (oldWidget.events != widget.events) {
       widget.calendarController._events = widget.events;
     }
+    if (oldWidget.holidays != widget.holidays) {
+      widget.calendarController._holidays = widget.holidays;
+    }
   }
 
   void _selectedDayCallback(DateTime day) {
