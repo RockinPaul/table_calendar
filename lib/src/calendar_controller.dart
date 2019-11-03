@@ -194,10 +194,6 @@ class CalendarController {
     bool animate = true,
     bool runCallback = false,
   }) {
-    print("VALUE IN SET SELECTED DAY: $value");
-    print(value.isBefore(DateTime.now()));
-    print(value.isAfter(DateTime.now()));
-
     if (animate) {
       if (value.isBefore(_getFirstDay(includeInvisible: false))) {
         _decrementPage();
@@ -299,13 +295,9 @@ class CalendarController {
   }
 
   DateTime _getFirstDay({@required bool includeInvisible}) {
-    print("GET FIRST DAY");
-    print(_calendarFormat.value);
-    if (_calendarFormat.value == CalendarFormat.month && !includeInvisible) {
-      print("FIRST FROM _FOCUSED");
+    if (_calendarFormat != null && _calendarFormat.value == CalendarFormat.month && !includeInvisible) {
       return _firstDayOfMonth(_focusedDay);
     } else {
-      print("FIRST FROM VISIBLE");
       return _visibleDays.value.first;
     }
   }
