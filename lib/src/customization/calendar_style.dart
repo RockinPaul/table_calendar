@@ -92,7 +92,7 @@ class CalendarStyle {
     this.markersColor = const Color(0xFF263238), // Material blueGrey[900]
     this.markersAlignment = Alignment.bottomCenter,
     this.markersPositionTop,
-    this.markersPositionBottom = 5.0,
+    this.markersPositionBottom = 14.0,
     this.markersPositionLeft,
     this.markersPositionRight,
     this.markersMaxAmount = 4,
