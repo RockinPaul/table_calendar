@@ -183,7 +183,9 @@ class CalendarController {
 
   /// Sets calendar format to a given `value`.
   void setCalendarFormat(CalendarFormat value) {
-    _calendarFormat.value = value;
+    if (_calendarFormat != null) {
+      _calendarFormat.value = value;
+    }
   }
 
   /// Sets selected day to a given `value`.
